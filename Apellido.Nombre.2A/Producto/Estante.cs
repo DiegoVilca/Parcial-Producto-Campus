@@ -11,7 +11,7 @@ namespace Entidades
         protected sbyte _capacidad;
         protected List<Producto> _productos;
 
-        public float ValorEstanteTotal { get { return ;} }
+        public float ValorEstanteTotal { get { return GetValorEstante() ;} }
 
         //constructores
 
@@ -33,20 +33,57 @@ namespace Entidades
         }
 
         private float GetValorEstante()
-        { 
+        {
+            float suma = 0;
+
+            foreach (Producto item in this._productos)
+            {
+                suma = item.Precio;
+            }
+
+            return suma;
         }
 
         public float GetValorEstante(ETipoProducto tipo)
         {
-            float suma;
+            float suma = 0;
 
-            foreach (Producto item in this._productos)
+            switch (tipo)
             {
-                if (item.GetType() == typeof8)
-                {
-                    
-                }
+                case ETipoProducto.Galletita:
+                    foreach (Producto item in this._productos)
+                    {
+                        if (item is Galletita)
+                        {
+                            suma = ((Galletita)item).Precio;
+                        }
+                    }
+                    break;
+                case ETipoProducto.Gaseosa:
+                    foreach (Producto item in this._productos)
+                    {
+                        if (item is Galletita)
+                        {
+                            suma = ((Galletita)item).Precio;
+                        }
+                    }
+                    break;
+                case ETipoProducto.Jugo:
+                    foreach (Producto item in this._productos)
+                    {
+                        if (item is Galletita)
+                        {
+                            suma = ((Galletita)item).Precio;
+                        }
+                    }
+                    break;
+                case ETipoProducto.Todos:
+                    suma = GetValorEstante();
+                    break;
+                
             }
+
+            return suma;
         }
 
         //operadores
@@ -106,7 +143,7 @@ namespace Entidades
                 case ETipoProducto.Galletita:
                     for (int i = 0; i < est._productos.Count; i++)
                     {
-                        if (est is Galletita)
+                        if (est._productos[i] is Galletita)
                         {
                             est._productos[i] = null;
                         }
@@ -115,7 +152,7 @@ namespace Entidades
                 case ETipoProducto.Gaseosa:
                     for (int i = 0; i < est._productos.Count; i++)
                     {
-                        if (est is Gaseosa)
+                        if (est._productos[i] is Gaseosa)
                         {
                             est._productos[i] = null;
                         }
@@ -124,7 +161,7 @@ namespace Entidades
                 case ETipoProducto.Jugo:
                     for (int i = 0; i < est._productos.Count; i++)
                     {
-                        if (est is Jugo)
+                        if (est._productos[i] is Jugo)
                         {
                             est._productos[i] = null;
                         }

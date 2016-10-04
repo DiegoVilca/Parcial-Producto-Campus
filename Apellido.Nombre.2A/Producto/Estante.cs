@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades.PrimerParcial_2016
 {
     class Estante
     {
@@ -84,6 +84,31 @@ namespace Entidades
             }
 
             return suma;
+        }
+
+        public string MostrarEstante(Estante est)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < est._productos.Count; i++)
+			{
+			    if (est._productos[i] is Galletita)
+                {
+                    sb.AppendLine(((Galletita)est._productos[i]).MostrarGalletita());
+                }
+
+                if (est._productos[i] is Jugo)
+                {
+                    sb.AppendLine(((Jugo)est._productos[i]).MostrarJugo());
+                }
+
+                if (est._productos[i] is Gaseosa)
+                {
+                    sb.AppendLine(((Gaseosa)est._productos[i]).MostrarGaseosa());
+                }
+			}
+
+            return sb.ToString();
         }
 
         //operadores

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Entidades.PrimerParcial_2016
 {
     public class Gaseosa :Producto
     {
@@ -12,14 +12,16 @@ namespace Entidades
 
         //constuctor
 
-        public Gaseosa(int codigo, float precio, EMarcaProducto marca, float litros) :base(codigo, marca, precio)
+        
+
+        public Gaseosa(int codigo, float precio, EMarcaProducto marca, float litros)  :base(codigo, marca, precio)
         {
             this._litros = litros;
         }
-
-        public Gaseosa(Producto producto, float litros) :this(, producto.Precio, producto.Marca, litros)
+        
+        public Gaseosa(Producto producto, float litros) :this((int)producto, producto.Precio, producto.Marca, litros)
         {
-
+            
         }
         //metodo
 
